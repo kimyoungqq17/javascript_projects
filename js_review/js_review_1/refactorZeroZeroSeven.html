@@ -1,0 +1,83 @@
+<!--we replace left and top with translate-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: black;
+      margin: 0;
+    }
+    .line {
+      position:absolute;
+      background-color: white;
+
+    }
+    .horizontal {
+      width: 100%;
+      height: 1px;
+      /* top: 50%; doing translates after being moved 50% so we remove these */
+    }
+    .vertical {
+      height: 100%;
+      width: 1px;
+      /* left: 50%;  */
+    }
+    .target{
+      position: absolute;
+      /* top: 50%;
+      left:50%;  */
+      transform: translate(-50%, -50%); 
+    }
+    .tag {
+      color:white;
+      position:absolute; 
+      margin: 20px;
+
+      /* top:50%;
+      left:50%;  */
+      /* transform: translate(20px, 20px); */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="line horizontal"></div>
+  <div class="line vertical"></div>
+  <img class="target" src="./target.png" alt="">
+  <span class="tag">Hello</span>
+
+  <script>
+    const vertical = document.querySelector('.vertical');
+    const horizontal = document.querySelector('.horizontal');
+    const target = document.querySelector('.target');
+    const tag = document.querySelector('.tag');
+
+    addEventListener('load', () => {
+      const targetRect = target.getBoundingClientRect();
+      // console.log(targetRect); 
+      const targetHalfWidth = targetRect.width / 2;
+      const targetHalfHeight= targetRect.height /  2;''
+
+    document.addEventListener('mousemove', (event) => {
+      const x = event.clientX;
+      const y = event.clientY;;
+
+      // console.log(`${x} ${y}`);
+      vertical.style.transform = `translateX(${x}px)`; 
+      horizontal.style.transform = `translateX(${y}px)`; 
+      
+
+
+      target.style.transform = `translate(${x - targetHalfWidth}px, ${y - targetHalfHeight}px)`; 
+      tag.style.transform = `translate(${x}px, ${y}px)`;
+      tag.innerHTML = `${x}px, ${y}px`;
+    })
+    })
+  </script>
+</body>
+</html>

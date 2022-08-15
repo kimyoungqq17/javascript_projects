@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="outer">
+    <div class="middle">
+      <button>click me</button>
+    </div>
+  </div>
+  <script>
+    
+    const outer = document.querySelector('.outer')
+    const middle = document.querySelector('.middle')
+    const button = document.querySelector('button')
+
+    //will capture all event handler from parent to child 
+    //then bubble up and trigger all 
+    outer.addEventListener('click', event => {
+      if(event.target !== event.currentTarget) {
+        return; 
+      }
+      console.log(`outer: ${event.currentTarget}, ${event.target}`); 
+    }); 
+    middle.addEventListener('click', event => {
+      console.log(`middle ${event.currentTarget}, ${event.target}`); 
+    })
+    button.addEventListener('click', event => {
+      console.log(`button ${event.currentTarget}, ${event.target}`);
+      event.stop
+    })
+    button.addEventListener('click', event => {
+      console.log(`button2 ${event.currentTarget}, ${event.target}`);
+    })
+  </script>
+</body>
+</html>

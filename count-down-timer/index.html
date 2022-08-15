@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Countdown</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <video class="video-background" loop mute autoplay>
+        <source src='time.mp4'>
+    </video>
+    <audio src="./alarm.mp3" id='audio' hidden></audio>
+    <audio id='speech' hidden></audio>
+    <div class="video-overlay"></div>
+    <div class="container">
+        <div class="input-container" id='input-container'>
+            <h1>Your Personal Countdown</h1>
+            <form class='form' id="countdownForm">
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder='What are You counting down to?'>
+                <div class="selection-container">
+                    <div class="date-sel-field">
+                        <label for="date-picker">Select a Date</label>
+                        <input type="date" id="date-picker">
+                    </div>
+                    <div class="time-sel-field">
+                        <label for="time-picker">Select Time</label>
+                        <input type="time" id="time-picker">
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox">
+                    <label for="last-timer" id="last-timer">Last duration not set yet</label>
+                </div>
+                <button type='submit'>Submit</button>
+                <p class='info-text' id="submit-info" hidden>Date and Time or last duration must be selected</p>
+            </form>
+        </div>
+        <div class="countdown" id="countdown" hidden>
+            <h1 id="countdown-title"></h1>
+            <ul>
+                <li><span></span>Days</li>
+                <li><span></span>Hours</li>
+                <li><span></span>Minutes</li>
+                <li><span></span>Seconds</li>
+            </ul>
+            <button id="countdown-button">Reset</button>
+        </div>
+        <div class="complete" id="complete" hidden>
+            <h1 class="complete-title">Countdown Complete</h1>
+            <h1 id="complete-info">Countdown Finished on 05-05-2021</h1>
+            <button id="complete-btn">New Countdown</button>
+        </div>
+    </div>
+    <script src="voice.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+

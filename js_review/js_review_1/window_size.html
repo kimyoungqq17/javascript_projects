@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .tag {
+      background-color: aqua;
+      display: inline-block;
+      padding: 16px;
+      margin-top: 16px;
+      font-size: 38px;
+    }
+  </style>
+</head>
+<body>
+  <div class="tag">
+    Window Size
+  </div>
+  <script>
+    //using a querySelector get the dom element 
+    const tag = document.querySelector('.tag');
+    //manipulate the div with updateTag()
+    function updateTag() {
+      tag.innerHTML = `
+      window.screen: ${window.screen.width}, ${window.screen.height} <br/>
+      window.outer: ${window.outerWidth}, ${window.outerHeight} <br/>
+      window.inner: ${window.innerWidth}, ${window.innerHeight} <br />
+      documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight} 
+      `;
+    }
+    //everytime its being triggered, resized we call a callback function
+    window.addEventListener('resize', () => {
+      // tag.innerHTML = `
+      // window.screen: ${window.screen.width}, ${window.screen.height} <br/>
+      // window.outer: ${window.outerWidth}, ${window.outerHeight} <br/>
+      // window.inner: ${window.innerWidth}, ${window.innerHeight} <br />
+      // documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight} 
+      // `
+      updateTag();
+    });
+    //call this one first when loaded
+    updateTag(); 
+  </script>
+  </body>
+</html>
